@@ -34,9 +34,14 @@ shellcmd xsh_hello(int nargs, char *args[]) {
 	}
 
 	if (nargs == 2) {
-		printf("\nHello %s, Welcome to the world of XINU!\n", args[1]);
-	} else {
+		strncpy (args[1], name, 64);
+		printf("\nCopied\n");
+	}
+	
+	if (args[1] == '\0') {
 		printf("\nHello Dodo, Welcome to the world of XINU!\n");
+	} else {
+		printf("\nHello %s, Welcome to the world of XINU!\n",args[1]);
 	}
 
 	return 0;
