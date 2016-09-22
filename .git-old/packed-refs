@@ -1,0 +1,5 @@
+# pack-refs with: peeled fully-peeled 
+a3ad6a56bf111c0eb766a106a2d494941ef101dc refs/remotes/origin/assignment-1
+a3ad6a56bf111c0eb766a106a2d494941ef101dc refs/remotes/origin/assignment-2
+a3ad6a56bf111c0eb766a106a2d494941ef101dc refs/remotes/origin/master
+9ce4643b2245d25ed87f3a8ce5c0c999f3628669 refs/remotes/origin/vm_gnumake

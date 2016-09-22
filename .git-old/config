@@ -1,0 +1,20 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = git@github.iu.edu:vpatani/OS-FA16.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[branch "assignment-1"]
+	remote = origin
+	merge = refs/heads/assignment-1
+[remote "upstream"]
+	url = git@github.iu.edu:SOIC-Operating-Systems/xinu.git
+	fetch = +refs/heads/*:refs/remotes/upstream/*
+[branch "assignment-2"]
+	remote = origin
+	merge = refs/heads/assignment-2
