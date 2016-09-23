@@ -4,7 +4,7 @@
 void consumer(int count) {
 	
 	int32 i;
-	for (i = 1; i<= count; i++)
-		kprintf("The Value of n is %d \n", n);	
+	for (i = 0; i < count; i++)
+		printf("Consumed Values: %d \n", n);	
 }
 
