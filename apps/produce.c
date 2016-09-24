@@ -3,7 +3,7 @@
 
 void producer(int count) {
 	int32 i;	
-	for (i=0; i<count; i++) {
+	for (i=1; i<=count; i++) {
 		n = i;
 		printf("Produced Value: %d\n",n);
 	}

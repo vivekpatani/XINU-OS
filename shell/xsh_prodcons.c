@@ -1,7 +1,7 @@
 #include <xinu.h>
 #include <prodcons.h>
 
-int n; //Definition for the global variable 'n'
+int n=0; //Definition for the global variable 'n'
 /*Now global variable n will be pn Heap so it is acessible*/
 
 shellcmd xsh_prodcons(int nargs, char *args[])
