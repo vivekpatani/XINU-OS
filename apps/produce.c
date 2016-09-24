@@ -4,7 +4,8 @@
 void producer(int count) {
 	int32 i;	
 	for (i=0; i<count; i++) {
-		printf("Produced Value: %d\n",++n);
+		n = i;
+		printf("Produced Value: %d\n",n);
 	}
 }
 
