@@ -3,10 +3,13 @@
 
 int n; //Definition for the global variable 'n'
 /*Now global variable n will be pn Heap so it is acessible*/
+sid32 produced, consumed;
 
 shellcmd xsh_prodcons(int nargs, char *args[])
 
 {
+        produced = semcreate(0);
+        consumed = semcreate(1);
 	//Argument verification and validations.
 	int count = 2000;
 	
