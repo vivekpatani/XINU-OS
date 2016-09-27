@@ -1,13 +1,16 @@
 #include <xinu.h>
 #include <prodcons.h>
 
-int n=0; //Definition for the global variable 'n'
+int n; //Definition for the global variable 'n'
 /*Now global variable n will be pn Heap so it is acessible*/
+sid32 produced, consumed;
 
 shellcmd xsh_prodcons(int nargs, char *args[])
 
 {
-	//Argument verification and validations.
+	produced = semcreate(0);
+        consumed = semcreate(1);
+        //Argument verification and validations.
 	int count = 2000;
 	
 	// If number of arguments are more than expected.

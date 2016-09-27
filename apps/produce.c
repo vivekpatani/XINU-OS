@@ -4,8 +4,10 @@
 void producer(int count) {
 	int32 i;	
 	for (i=1; i<=count; i++) {
-		n = i;
+	        wait(consumed);	
+                n = i;
 		printf("Produced Value: %d\n",n);
+		signal(produced);
 	}
 }
 

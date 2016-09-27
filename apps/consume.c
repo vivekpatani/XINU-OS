@@ -4,7 +4,11 @@
 void consumer(int count) {
 	
 	int32 i;
-	for (i = 1; i <= count; i++)
-		printf("Consumed Values: %d \n", n);	
+	for (i = 1; i <= count; i++){
+                wait(produced);
+		printf("Consumed Values: %d \n", n);
+		signal(consumed);	
 }
-
+semdelete(produced);
+semdelete(consumed);
+}
