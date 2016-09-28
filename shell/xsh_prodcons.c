@@ -5,12 +5,11 @@ int n; //Definition for the global variable 'n'
 /*Now global variable n will be pn Heap so it is acessible*/
 sid32 produced, consumed;
 
-shellcmd xsh_prodcons(int nargs, char *args[])
+shellcmd xsh_prodcons(int nargs, char *args[]) {
 
-{
 	produced = semcreate(0);
-        consumed = semcreate(1);
-        //Argument verification and validations.
+	consumed = semcreate(1);
+	//Argument verification and validations.
 	int count = 2000;
 	
 	// If number of arguments are more than expected.
@@ -37,6 +36,7 @@ shellcmd xsh_prodcons(int nargs, char *args[])
 	if (nargs == 2) {
 		count = atoi(args[1]);
 	}
+	
 	resume( create(producer, 1024, 20, "producer", 1, count));
 	resume( create(consumer, 1024, 20, "consumer", 1, count));
 	
