@@ -156,8 +156,8 @@
 %	NAME AND CLASS SECTION
 %----------------------------------------------------------------------------------------
 
-\newcommand{\hmwkTitle}{Assignment\ \#2} % Assignment title
-\newcommand{\hmwkDueDate}{Friday,\ September\ 23,\ 2016} % Due date
+\newcommand{\hmwkTitle}{Assignment\ \#3} % Assignment title
+\newcommand{\hmwkDueDate}{Wednesday,\ September\ 28,\ 2016} % Due date
 \newcommand{\hmwkClass}{CSCI - B\ 536} % Course/class
 \newcommand{\hmwkClassTime}{} % Class/lecture time
 \newcommand{\hmwkClassInstructor}{Prof. Swany} % Teacher/lecturer
@@ -201,10 +201,11 @@
 % To have just one problem per page, simply put a \clearpage after each problem
 
 \begin{homeworkProblem}
-Does your programme output any garbage value? \\
+How exactly is synchronization achieved using semaphore in our assignment? \\
 \begin{itemize}
-\item No, we do not get garbage values. The reason being that our producer produces all the values and then switches to consumer, who only consumes one value which suppresses the probability of getting garbage. Input on the other hand if given as char array interpreted as input will throw a garbage value.
-\item GCs are generally non-deterministic and when we try to access a memory location which is not correctly defined it yields garbage.
+\item We have used \textit{wait} and \textit{signal} for keeping the control of the critical section. First wait indicates the consumer process to wait and allows the common buffer n to be executed by the producer followed by producer sending a signal to consumer indicating that they can now take control of the critical block (i.e. the common buffer n) which then consumes and they do it in turn with each other.
+
+\item The operations of \textit{wait} and \textit{signal} are \textbf{atomic}.
 \end{itemize}
 
 \end{homeworkProblem}
@@ -214,10 +215,10 @@ Does your programme output any garbage value? \\
 %----------------------------------------------------------------------------------------
 
 \begin{homeworkProblem}
-Are all the values getting consumed? Check your programme for a small count of 20.
+Can the above synchronization be achieved with just one semaphore? Why or why not? 
 
 \begin{itemize}
-\item No, we are not consuming all the values. The consumer consumes only one value, the last produced value.
+\item I don't think so because we need two different semaphores to indicate the exclusiveness of the critical section. One semaphore to handle the consumer and one to handle the producer. These are used to indicate \textit{wait} and \textit{signal} for accessing the critical block.
 \end{itemize}
 \end{homeworkProblem}
 
@@ -228,7 +229,7 @@ Are all the values getting consumed? Check your programme for a small count of 2
 \begin{homeworkProblem}[Submission Links]
 \begin{enumerate}
 \item \href{https://github.iu.edu/vpatani/OS-FA16}{GitHub Repo}
-\item \href{https://github.iu.edu/vpatani/OS-FA16/tree/assignment-2}{Branch for Assignment 2}
+\item \href{https://github.iu.edu/vpatani/OS-FA16/tree/assignment-3}{Branch for Assignment 2}
 \end{enumerate}
 \end{homeworkProblem}
 
