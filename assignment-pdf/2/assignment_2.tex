@@ -148,7 +148,7 @@
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
-    filecolor=magenta,      
+    filecolor=blue,      
     urlcolor=cyan,
 }
 
@@ -156,12 +156,12 @@
 %	NAME AND CLASS SECTION
 %----------------------------------------------------------------------------------------
 
-\newcommand{\hmwkTitle}{Assignment\ \#1} % Assignment title
-\newcommand{\hmwkDueDate}{Sunday,\ September\ 25,\ 2016} % Due date
-\newcommand{\hmwkClass}{CSCI - B\ 551} % Course/class
+\newcommand{\hmwkTitle}{Assignment\ \#2} % Assignment title
+\newcommand{\hmwkDueDate}{Friday,\ September\ 23,\ 2016} % Due date
+\newcommand{\hmwkClass}{CSCI - B\ 536} % Course/class
 \newcommand{\hmwkClassTime}{} % Class/lecture time
-\newcommand{\hmwkClassInstructor}{Prof. Crandall} % Teacher/lecturer
-\newcommand{\hmwkAuthorName}{Vivek Patani (vpatani)} % Your name
+\newcommand{\hmwkClassInstructor}{Prof. Swany} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{vpatani / poosingh} % Your name
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -201,41 +201,49 @@
 % To have just one problem per page, simply put a \clearpage after each problem
 
 \begin{homeworkProblem}
-Listing \ref{homework_example} shows a Perl script.
-
-\perlscript{homework_example}{Sample Perl Script With Highlighting}
+Does your programme output any garbage value? \\
+\begin{itemize}
+\item No, we do not get garbage values. The reason being that our producer produces all the values and then switches to consumer, who only consumes one value which suppresses the probability of getting garbage. Input on the other hand if given as char array interpreted as input will throw a garbage value.
+\item GCs are generally non-deterministic and when we try to access a memory location which is not correctly defined it yields garbage.
+\end{itemize}
 
 \end{homeworkProblem}
-
-\clearpage
 
 %----------------------------------------------------------------------------------------
 %	PROBLEM 2
 %----------------------------------------------------------------------------------------
 
 \begin{homeworkProblem}
+Are all the values getting consumed? Check your programme for a small count of 20.
 
-\problemAnswer{
-\begin{center}
-\includegraphics[width=0.75\columnwidth]{example_figure} % Example image
-\end{center}
-
-}
+\begin{itemize}
+\item No, we are not consuming all the values. The consumer consumes only one value, the last produced value.
+\end{itemize}
 \end{homeworkProblem}
 
-\clearpage
-
 %----------------------------------------------------------------------------------------
-%	REFERENCES
+%	SUBMISSION LINKS
 %----------------------------------------------------------------------------------------
 
-\begin{homeworkProblem}[References]
+\begin{homeworkProblem}[Submission Links]
 \begin{enumerate}
-\item \href{http://www.sharelatex.com}{Something Linky}
-\item \href{http://www.sharelatex.com}{Something Linky}
+\item \href{https://github.iu.edu/vpatani/OS-FA16}{GitHub Repo}
+\item \href{https://github.iu.edu/vpatani/OS-FA16/tree/assignment-2}{Branch for Assignment 2}
 \end{enumerate}
-\clearpage
 \end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	WORK DISTRIBUTION
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}[Task Distribution]
+\begin{itemize}
+\item Pooja Singh - Implemented Consumer and Producer in apps.
+\item Vivek Patani - Implemented xsh\_prodcons and added functions to shell.
+\end{itemize}
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
 
