@@ -51,3 +51,9 @@ compile/uboot-tool/mkimage
 
 # Debug files
 *.dSYM/
+
+# Extra Folders
+compile/
+include/
+system/
+config/
