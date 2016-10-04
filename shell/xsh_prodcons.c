@@ -1,6 +1,11 @@
 #include <xinu.h>
 #include <prodcons.h>
+#include <future.h>
+typedef struct futent future;
 
+
+uint future_cons(future *fut);
+uint future_prod(future *fut);
 int n; //Definition for the global variable 'n'
 /*Now global variable n will be pn Heap so it is acessible*/
 sid32 produced, consumed;
@@ -8,6 +13,7 @@ sid32 produced, consumed;
 shellcmd xsh_prodcons(int nargs, char *args[])
 
 {
+        
         produced = semcreate(0);
         consumed = semcreate(1);
 	//Argument verification and validations.
@@ -41,4 +47,18 @@ shellcmd xsh_prodcons(int nargs, char *args[])
 	resume( create(consumer, 1024, 20, "consumer", 1, count));
 	
 	return (0);
+future *f1, *f2, *f3;
+ 
+  f1 = future_alloc(FUTURE_EXCLUSIVE);
+  f2 = future_alloc(FUTURE_EXCLUSIVE);
+  f3 = future_alloc(FUTURE_EXCLUSIVE);
+ 
+  resume( create(future_cons, 1024, 20, "fcons1", 1, f1) );
+  resume( create(future_prod, 1024, 20, "fprod1", 1, f1) );
+  resume( create(future_cons, 1024, 20, "fcons2", 1, f2) );
+  resume( create(future_prod, 1024, 20, "fprod2", 1, f2) );
+  resume( create(future_cons, 1024, 20, "fcons3", 1, f3) );
+  resume( create(future_prod, 1024, 20, "fprod3", 1, f3) );
+
+
 }
