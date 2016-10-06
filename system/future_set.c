@@ -7,16 +7,16 @@ syscall future_set(future *f, int *value) {
 		(*f).pid = getpid();
 		(*f).value = value; //sets the future value
 		(*f).state = FUTURE_VALID;
-		printf("%d\n",(*f).pid);
-		printf("Value: %d\n",*((*f).value));
 		return OK;
 	} else if ((*f).state == FUTURE_EMPTY) {
 		(*f).value = value;
 		(*f).state = FUTURE_VALID;
 		resume((*f).pid);
 		return OK;
-	} else {
-		return SYSERR;
+	} else if ((*f).state == FUTURE_WAITING) {
+		(*f).value = value;
+		resume((*f).pid);
+		return OK;
 	}
 	return SYSERR;
 }

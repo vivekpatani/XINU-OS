@@ -12,7 +12,6 @@ uint32 future_cons(future *fut) {
 		printf("future_get failed\n");
 		return -1;
 	}
-	
 	printf("It produced %d\n", i);
 	return OK;
 }
