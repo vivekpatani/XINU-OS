@@ -9,8 +9,7 @@
 /* modes of operation for future*/
 #define FUTURE_EXCLUSIVE  1	
 
-typedef struct futent
-{
+typedef struct futent {
    int *value;		
    int flag;		
    int state;         	
