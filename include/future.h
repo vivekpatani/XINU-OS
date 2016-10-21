@@ -1,6 +1,6 @@
 #ifndef _FUTURE_H_
 #define _FUTURE_H_
- 
+
 /* define states */
 #define FUTURE_EMPTY	  0
 #define FUTURE_WAITING 	  1         
@@ -16,8 +16,6 @@ typedef struct futent {
    int flag;		
    int state;         	
    pid32 pid;
-   queue set_queue;     
-   queue get_queue;
 } future;
 
 /* Interface for system call */

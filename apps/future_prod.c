@@ -1,9 +1,9 @@
-#include<xinu.h>
-#include<future.h>
-typedef struct futent future;
-
+#include <xinu.h>
 #include <prodcons.h>
 
+typedef struct futent future;
+
+/* Producer for that future */
 uint32 future_prod(future *fut) {
 	
 	int i, j;

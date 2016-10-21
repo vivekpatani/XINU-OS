@@ -1,8 +1,9 @@
-#include<xinu.h>
-#include<future.h>
-typedef struct futent future;
+#include <xinu.h>
 #include <prodcons.h>
 
+typedef struct futent future;
+
+/* Future Consumer*/
 uint32 future_cons(future *fut) {
 	
 	int i, status;
