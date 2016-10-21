@@ -7,6 +7,7 @@ compile/xinu.map
 compile/xinu
 compile/xinu.bin
 compile/xinu.boot
+compile/.wav.wav
 config/lex.yy.c
 config/y.tab.c
 config/conf.h
@@ -51,3 +52,9 @@ compile/uboot-tool/mkimage
 
 # Debug files
 *.dSYM/
+
+# Extra Folders
+compile/
+include/
+system/
+config/
