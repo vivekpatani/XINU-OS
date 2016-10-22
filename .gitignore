@@ -55,6 +55,4 @@ compile/uboot-tool/mkimage
 
 # Extra Folders
 compile/
-include/
-system/
 config/
