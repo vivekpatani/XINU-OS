@@ -12,5 +12,19 @@ syscall future_set(future *f, int *value) {
 			return OK;
 		}
 	}
+
+	// Else if the flag is SHARED
+	else if (f->flag == 2) {
+
+		return OK;
+	}
+
+	// Else if the flag is QUEUE
+	else if (f->flag == 3) {
+
+		return OK;
+	}
+
+	//Else there is an ERR
 	return SYSERR;
 }

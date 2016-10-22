@@ -20,7 +20,7 @@ shellcmd xsh_prodcons(int nargs, char *args[]) {
 	if (nargs == 2 && strncmp(args[1], "-f", 3) == 0) {
 
 		future *f_exclusive;
-
+		
 		f_exclusive = future_alloc(FUTURE_EXCLUSIVE);
 
 		// Test FUTURE_EXCLUSIVE

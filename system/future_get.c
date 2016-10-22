@@ -4,7 +4,7 @@
 syscall future_get(future *f, int *value) {
 	int status;
 
-	// If Mode is exclusive
+	// If Mode is EXCLUSIVE
 	if (f->flag == 1) {
 		if (f->state == FUTURE_EMPTY) {
 			f->state = FUTURE_WAITING;
@@ -14,5 +14,19 @@ syscall future_get(future *f, int *value) {
 			return OK;
 		}
 	}
+	
+	// Else if Mode is SHARED
+	else if (f->flag == 2) {
+
+		return OK;
+	}
+
+	// Else if Mode is QUEUE
+	else if (f->flag == 3) {
+
+		return OK;
+	}
+
+	// Else there is an ERR
 	return SYSERR;
 }

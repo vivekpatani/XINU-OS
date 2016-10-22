@@ -1,4 +1,3 @@
-#include <queue_proc.h>
 #include <xinu.h>
 #include <stdlib.h>
 
@@ -61,11 +60,11 @@ pid32 Dequeue (queue* q) {
  *  Print  -  Print the complete Queue.
  *------------------------------------------------------------------------
  */
-// void Print() {
-// 	struct Node* temp = front;
-// 	while (temp != NULL) {
-// 		printf("%d ", temp->process_id);
-// 		temp = temp->next;
-// 	}
-// 	printf("\n");
-// }
+void Print(queue* q) {
+	struct Node* temp = q->front;
+	while (temp != NULL) {
+		printf("%d ", temp->process_id);
+		temp = temp->next;
+	}
+	printf("\n");
+}
