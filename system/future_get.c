@@ -29,11 +29,30 @@ syscall future_get(future *f, int *value) {
 	}
 
 	// Else if Mode is QUEUE
-	else if (f->flag == 3) {
-
-		return OK;
-	}
-
-	// Else there is an ERR
-	return SYSERR;
+	 else if (f->flag == 3) {
+             if(!IsEmpty(f->get_queue))
+               {
+                f->state = FUTURE_WAITING;
+                f->pid = getpid();
+                suspend(f->pid);
+                Enqueue(f->get_queue,f->pid);
+              }
+             if(!IsEmpty(f->set_queue))
+               {
+                 f->state = FUTURE_WAITING;
+                 f->pid = getpid();
+                 suspend(f->pid);
+                 resume(Dequeue(f->set_queue));
+                 *value = f->value;
+              }
+          else if(IsEmpty(f->set_queue))
+             {
+                 Enqueue(f->get_queue,f->pid);
+             }
+           return OK;
+   }
+        // Else there is an ERR
+        return SYSERR;
 }
+
+

@@ -37,10 +37,20 @@ syscall future_set(future *f, int *value) {
 
 	// Else if the flag is QUEUE
 	else if (f->flag == 3) {
+                 if(f->state == FUTURE_EMPTY || f->state == FUTURE_WAITING){
+                  f->state = FUTURE_WAITING;
+                 if(IsEmpty(f->get_queue))
+                {
+                  Enqueue(f->set_queue,f->pid);
+                }
+                 else if(!IsEmpty(f->get_queue))
+                   {
+                      f->value = value;
+                      resume( Dequeue(f->get_queue));
+                  }
+                return OK;
+             }
 
-		return OK;
 	}
-
-	//Else there is an ERR
 	return SYSERR;
 }
