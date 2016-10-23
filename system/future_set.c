@@ -3,7 +3,6 @@
 /* Setting the value for a ceratin future */
 syscall future_set(future *f, int *value) {
 
-	printf("Flag in Set: %d\n", f->flag);
 	// If flag is EXCLUSIVE
 	if (f->flag == 1) {
 		if (f->state == FUTURE_WAITING || f->state == FUTURE_EMPTY) {
@@ -37,10 +36,8 @@ syscall future_set(future *f, int *value) {
 	// Else if the flag is QUEUE
 	else if (f->flag == 3) {
 
-		// printf("Set Called Now\n");
 		// If Get Queue is Not Empty
 		if (!IsEmpty(f->get_queue)) {
-			// printf("Set Valud PID:%d\n",getpid());
 			f->value = value;
 			f->state = FUTURE_VALID;
 			resume(Dequeue(f->get_queue));

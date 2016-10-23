@@ -33,7 +33,6 @@ syscall future_get(future *f, int *value) {
 
 	 	if (f->state == FUTURE_EMPTY || f->state == FUTURE_WAITING) {
 
-	 		//printf("Get Valud PID:%d\n",getpid());
 	 		// If Set Queue is not Empty
 	 		if (!IsEmpty(f->set_queue)) {
 	 			resume(Dequeue(f->set_queue));

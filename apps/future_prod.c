@@ -12,7 +12,6 @@ uint32 future_prod(future *fut) {
 
 	for (i=0; i<1000; i++) j += i;
 
-	printf("%d\n", j);
-	future_set(fut, &j);
+	future_set(fut, j);
 	return OK;
 }
