@@ -1,0 +1,5 @@
+Contribution :
+Pooja Singh: Created the system calls future_get, future_free, queue_proc.h and future_consumer, future_producer files.
+Vivek Patani: Created the system calls future_set, future_alloc, queue_proc.c and future header file as well as changes in xsh_prodcons.c.
+
+We implemented our own Queue, so finally we have used that in our code.
