@@ -30,29 +30,33 @@ syscall future_get(future *f, int *value) {
 
 	// Else if Mode is QUEUE
 	 else if (f->flag == 3) {
-             if(!IsEmpty(f->get_queue))
-               {
-                f->state = FUTURE_WAITING;
-                f->pid = getpid();
-                suspend(f->pid);
-                Enqueue(f->get_queue,f->pid);
-              }
-             if(!IsEmpty(f->set_queue))
-               {
-                 f->state = FUTURE_WAITING;
-                 f->pid = getpid();
-                 suspend(f->pid);
-                 resume(Dequeue(f->set_queue));
-                 *value = f->value;
-              }
-          else if(IsEmpty(f->set_queue))
-             {
-                 Enqueue(f->get_queue,f->pid);
-             }
-           return OK;
-   }
-        // Else there is an ERR
-        return SYSERR;
+
+	 	if (f->state == FUTURE_EMPTY || f->state == FUTURE_WAITING) {
+
+	 		//printf("Get Valud PID:%d\n",getpid());
+	 		// If Set Queue is not Empty
+	 		if (!IsEmpty(f->set_queue)) {
+	 			resume(Dequeue(f->set_queue));
+	 		}
+
+	 		// If the Set Queue is Empty 
+	 		else {
+	 			Enqueue(f->get_queue, getpid());
+	 			suspend(getpid());
+	 		}
+	 	}
+
+	 	// If State is Valid, set Value
+	 	if (f->state == FUTURE_VALID) {
+	 		*value = f->value;
+	 		f->state = FUTURE_EMPTY;
+	 	} else {
+	 		return SYSERR;
+	 	}
+
+
+	 	return OK;
+	 }
+	 // Else there is an ERR
+	 return SYSERR;
 }
-
-
