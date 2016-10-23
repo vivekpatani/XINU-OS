@@ -15,8 +15,24 @@ syscall future_set(future *f, int *value) {
 
 	// Else if the flag is SHARED
 	else if (f->flag == 2) {
+		if (f->state == FUTURE_WAITING || f->state == FUTURE_EMPTY) {
+			f->value = value;
+			f->state = FUTURE_VALID;
+			pid32 i = 4;
 
-		return OK;
+			// Pop All the processes in the Get Queue
+			while (!IsEmpty(f->get_queue)) {
+				resume(Dequeue(f->get_queue));
+			}
+
+			future_free(f);
+			return OK;
+		}
+
+		else if (f->state == FUTURE_VALID) {
+			printf("Error, Consecutive Set Call!\n");
+			return SYSERR;
+		}
 	}
 
 	// Else if the flag is QUEUE

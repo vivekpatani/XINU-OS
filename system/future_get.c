@@ -14,11 +14,18 @@ syscall future_get(future *f, int *value) {
 			return OK;
 		}
 	}
-	
+
 	// Else if Mode is SHARED
 	else if (f->flag == 2) {
 
-		return OK;
+		if (f->state == FUTURE_EMPTY || f->state == FUTURE_WAITING) {
+			f->state = FUTURE_WAITING;
+			// Enqueue all the incoming process.
+			Enqueue(f->get_queue, getpid());
+			suspend(getpid());
+			*value = f->value;
+			return OK;
+		}
 	}
 
 	// Else if Mode is QUEUE

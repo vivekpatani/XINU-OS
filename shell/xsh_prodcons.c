@@ -19,13 +19,22 @@ shellcmd xsh_prodcons(int nargs, char *args[]) {
 
 	if (nargs == 2 && strncmp(args[1], "-f", 3) == 0) {
 
-		future *f_exclusive;
-		
+		future *f_exclusive, *f_shared;
+
 		f_exclusive = future_alloc(FUTURE_EXCLUSIVE);
+		f_shared = future_alloc(FUTURE_SHARED);
 
 		// Test FUTURE_EXCLUSIVE
 		resume( create(future_cons, 1024, 20, "fcons1", 1, f_exclusive) );
 		resume( create(future_prod, 1024, 20, "fprod1", 1, f_exclusive) );
+
+		// Test FUTURE_SHARED
+		resume( create(future_cons, 1024, 20, "fcons2", 1, f_shared) );
+		resume( create(future_cons, 1024, 20, "fcons3", 1, f_shared) );
+		resume( create(future_cons, 1024, 20, "fcons4", 1, f_shared) );
+		resume( create(future_cons, 1024, 20, "fcons5", 1, f_shared) );
+		resume( create(future_prod, 1024, 20, "fprod2", 1, f_shared) );
+		resume( create(future_prod, 1024, 20, "fprod2", 1, f_shared) ); //Consecutive Set Call.
 		
 		return (0);
 	}

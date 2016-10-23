@@ -68,3 +68,15 @@ void Print(queue* q) {
 	}
 	printf("\n");
 }
+
+/*------------------------------------------------------------------------
+ *  IsEmpty  -  Returns a boolean telling whether if it is empty or not.
+ *------------------------------------------------------------------------
+ */
+ bool IsEmpty(queue* q) {
+
+ 	if (q->front == NULL) {
+ 		return TRUE;
+ 	}
+ 	return FALSE;
+ }
